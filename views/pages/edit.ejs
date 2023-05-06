@@ -1,0 +1,71 @@
+<%- include('../template/header.ejs'); -%>
+
+  <div class="container mt-5">
+    <a href="/">
+        <i class="fa fa-arrow-circle-left fa-2x" aria-hidden="true"></i>
+    </a>
+    <p class="display-6 text-center">UPDATE USER</p>
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-8">
+        <% if (locals.error) { %>
+            <div class="alert alert-danger text-center">
+                Tous Les Champs Sont Obligatoires!!!!
+            </div>
+        <% } %>
+        <form action="/edit/<%= user.idUser %>" method="post">
+            
+            <div class="mb-3">
+                <label for="nom" class="form-label">NAME</label>
+                <input type="text" class="form-control" id="nom" name="nom" value="<%= user.name%>">
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">EMAIL</label>
+                <input type="email" class="form-control" id="email" name="email" value="<%= user.email%>">
+            </div>
+            <div class="mb-3">
+                <label for="tel" class="form-label">PHONE NUMBER</label>
+                <input type="tel" class="form-control" id="tel" name="tel" value="<%= user.tel%>">
+            </div>
+            <div class="mb-3">
+                <label for="ville" class="form-label">CITY</label>
+                <input type="text" class="form-control" id="ville" name="ville" value=" <%= user.ville%>">
+            </div>
+            <div class="mb-3">
+                <select class="form-select" aria-label="Default select example" name="pays">
+                    <option value="">Choose Your Country</option>
+                    <option value="Cameroon">Cameroon</option>
+                    <option value="Tchad">Tchad</option>
+                    <option value="Gabon">Gabon</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="poid" class="form-label">WEIGTH</label>
+                <input type="range" class="form-range" id="poid" name="poid" min="16" max="100" step="1" value=" <%= user.poids %>">
+            </div>
+            <div class="mb-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" value="masculin" name="sexe" id="masc">
+                    <label class="form-check-label" for="masc">
+                      MASCULIN
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" value="feminin" name="sexe" id="fem">
+                    <label class="form-check-label" for="fem">
+                      FEMININ
+                    </label>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="comment" class="form-label">DESCRIPTION</label>
+                <textarea class="form-control" id="comment" rows="3" name="comment">
+                    <%= user.description %>
+                </textarea>
+            </div>
+            <button type="submit" class="btn btn-primary w-100" style="border-radius: 50px;">UPDATE USER</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+<%- include('../template/footer.ejs'); -%>

@@ -1,0 +1,57 @@
+<%- include('../template/header.ejs'); -%>
+
+  <div class="container mt-5">
+    <a href="/create" class="btn btn-primary">
+      <i class="fa fa-user me-2"></i>
+      New User
+    </a>
+    <div class="row d-flex justify-content-center mt-5">
+      <div class="col-md-10">
+
+        <table  class="table table-sm caption-top table-primary" style="width:100%">
+          <thead>
+            <tr>
+              <!-- <th scope="col">#</th> -->
+              <th scope="col">NOM</th>
+              <th scope="col">EMAIL</th>
+              <th scope="col">TELEPHONE</th>
+              <th scope="col">VILLE</th>
+              <th scope="col">PAYS</th>
+              <th scope="col">POIDS</th>  
+              <th scope="col">SEXE</th>
+              <th scope="col">DESCRIPTION</th>
+              <th scope="col">EDITER</th>
+              <th scope="col">SUPRIMER</th>
+            </tr>
+          </thead>
+            <tbody>
+            <% users.forEach(function(user){ %>
+              <tr>
+                <!-- <th scope="row">1</th> -->
+                <td style="background-color: rgb(212, 118, 118);"><%= user.name %></td>
+                <td style="background-color: rgb(133, 182, 133);"><%= user.email %></td>
+                <td style="background-color: rgb(168, 235, 235);"><%= user.tel %></td>
+                <td style="background-color: rgb(129, 129, 219);"><%= user.ville %></td>
+                <td style="background-color: rgb(101, 70, 131);"><%= user.pays %></td>
+                <td style="background-color: rgb(211, 137, 85);"><%= user.poids %></td>
+                <td style="background-color: rgb(186, 224, 147);"><%= user.sexe %></td>
+                <td style="background-color: rgb(105, 105, 105);"><%= user.description %></td>
+                <td style="background-color: antiquewhite;" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip" data-bs-title="Modifie">
+                  <a href="/edit/<%= user.idUser %>">
+                    <i class="fa fa-edit"></i>
+                  </a>
+                </td>
+                <td style="background-color: turquoise;" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip" data-bs-title="Supprimer">
+                  <a href="/delete/<%= user.idUser %>">
+                    <i class="fa fa-trash text-danger"></i>
+                  </a>
+                </td>
+              </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+<%- include('../template/footer.ejs'); -%>
